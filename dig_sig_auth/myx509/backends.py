@@ -7,10 +7,11 @@ from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
 
-class CertificateAuthentication(BaseBackend):
+class CertificateAuthentication(BaseBackend, BaseAuthentication):
     def authenticate(self, request, **kwargs):
         # Get the certificate from the request
         certificate = request.FILES.get('certificate')
+        # certificate = request.META.get('HTTP_X_SSL_CLIENT_CERT')
 
         if not certificate:
             # If the certificate is not provided, raise an authentication failed error
@@ -41,8 +42,8 @@ class CertificateAuthentication(BaseBackend):
     def get_user(self, user_id):
         try:
             return User.objects.get(pk=user_id)
-        except Exception: # noqa
+        except User.DoesNotExist:  # noqa
             return None
 
     def authenticate_header(self, request):
-        return None
+        return 'Basic realm="My Realm"'

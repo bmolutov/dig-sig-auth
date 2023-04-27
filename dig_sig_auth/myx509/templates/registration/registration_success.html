@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Successful</title>
+</head>
+<body>
+{% load my_filters %}
+    <h1>Registration Successful!</h1>
+    <p>Your account has been created.</p>
+<!--    <a href="{% url 'cert_bytes' %}">Download Cert File</a>-->
+<a href="data:application/octet-stream;base64,{{ pem_bytes|base64_encode }}" download="certificate.pem">Download Certificate</a>
+
+</body>
+</html>

@@ -146,9 +146,9 @@ REST_FRAMEWORK = {
     # YOUR SETTINGS
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'myx509.backends.CertificateAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        # 'myx509.backends.CertificateAuthentication',
     ],
 }
 
@@ -171,3 +171,8 @@ STATICFILES_FINDERS = [
 # Setting models for swapper module
 DJANGO_X509_CA_MODEL = 'myx509.Ca'
 DJANGO_X509_CERT_MODEL = 'myx509.Cert'
+#
+# AUTHENTICATION_BACKENDS = [
+#     'myx509.backends.CertificateAuthentication',
+#     'django.contrib.auth.backends.ModelBackend',
+# ]

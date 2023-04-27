@@ -1,2 +1,5 @@
 Django==4.2
 psycopg2-binary==2.9.6
+drf-spectacular==0.26.2
+django-x509==1.1
+openwisp-utils==1.0.4
